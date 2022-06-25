@@ -1,12 +1,13 @@
 # HW_Postgresql_DZ1
-1.	Создать новую базу данных с именем forum. В базе создать таблицы users, city, topic. 
+>1.	Создать новую базу данных с именем forum. В базе создать таблицы users, city, topic. 
 Структура таблицы users: id, username,  first_name, last_name, last_activity, password
 Структура таблицы city: id, city, country
 Структура таблицы topic: id, name_topic, description,  last_activity, last_user
-2.	Наполнить базу данных forum по 10 строк на каждую таблицу, заполнить все кроме last_activity, 
+>>2.	Наполнить базу данных forum по 10 строк на каждую таблицу, заполнить все кроме last_activity, 
 last_user. Базу данных forum приложить к заданию.
-3.	Выбрать из таблицы users: username, first_name, last_name между id 3 и 7
+>>>3.	Выбрать из таблицы users: username, first_name, last_name между id 3 и 7
 
+```
 create database forum;
 create table users (
     id INT PRIMARY KEY GENERATED ALWAYS AS identity,
@@ -30,3 +31,4 @@ create table topic (
 SELECT username, first_name, last_name FROM users
 ORDER BY users
 limit 5 offset 2; --OFFSET позволяет указать, с какой строки надо начинать выборку
+```
