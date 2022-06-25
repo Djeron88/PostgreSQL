@@ -7,7 +7,7 @@
 last_user. Базу данных forum приложить к заданию.
 >>>3.	Выбрать из таблицы users: username, first_name, last_name между id 3 и 7
 
-```
+```python
 create database forum;
 create table users (
     id INT PRIMARY KEY GENERATED ALWAYS AS identity,
