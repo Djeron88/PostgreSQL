@@ -60,7 +60,7 @@ project_description text,
 type_of_penalty varchar,
 penalty_points int,
 director varchar,
-position_director varchar,
+position_director varchar
 );
 
 create sequence position_id;
