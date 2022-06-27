@@ -68,7 +68,7 @@ alter table workers drop column director, drop column position_director;
 alter table workers add column director_id int;
  
 insert into director (director, position_director) values 
-('Putin V', 'President'),
+('Petrov', 'President'),
 ('Medvedev', 'CEO');
 insert into penalty (type_of_penalty, penalty_points) values 
 ('Опоздание', '500');
