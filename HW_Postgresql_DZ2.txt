@@ -6,10 +6,11 @@
 2. Декомпозировать таблицу workers до 3 нормальной формы
 3. Наполнить таблицы после декомпозиции таблицы
 
+create database lessons_5;
 create sequence workers_id;
 create table workers 
 (
-id int not null default nextval('workers_id') primary key,
+id int not null default nextval('workers_id'),
 "table" uuid,
 first_name varchar,
 last_name varchar,
@@ -23,7 +24,8 @@ project_description text,
 type_of_penalty varchar,
 penalty_points int,
 director varchar,
-position_director varchar
+position_director varchar,
+primary key(id)
 );
 
 create sequence position_id;
@@ -47,24 +49,25 @@ alter table workers drop column project, drop column project_description;
 alter table workers add column project_id int;
 
 create sequence penalty_id;
-create table penalty 
+create table penalty
 (
 id int not null default nextval('penalty_id') primary key,
 type_of_penalty varchar,
-penalty_points int,
+penalty_points int
 );
-alter table workers drop column penalty, drop column type_of_penalty;
+alter table workers drop column type_of_penalty, drop column penalty_points;
 alter table workers add column penalty_id int;
 
 create sequence director_id;
 create table director
 (
 id int not null default nextval('director_id') primary key,
+director varchar,
 position_director varchar
 );
 alter table workers drop column director, drop column position_director;
 alter table workers add column director_id int;
-
+ 
 insert into director (director, position_director) values 
 ('Putin V', 'President'),
 ('Medvedev', 'CEO');
