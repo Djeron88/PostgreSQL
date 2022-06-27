@@ -1,4 +1,4 @@
-# HW DZ 1
+# HW_Postgresql_DZ1
 >1.	Создать новую базу данных с именем forum. В базе создать таблицы users, city, topic. 
 Структура таблицы users: id, username,  first_name, last_name, last_activity, password
 Структура таблицы city: id, city, country
@@ -31,3 +31,4 @@ SELECT username, first_name, last_name FROM users
 ORDER BY users
 limit 5 offset 2; --OFFSET позволяет указать, с какой строки надо начинать выборку
 ```
+# HW_Postgresql_DZ2
