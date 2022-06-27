@@ -10,7 +10,7 @@ create database lessons_5;
 create sequence workers_id;
 create table workers 
 (
-id int not null default nextval('workers_id'),
+id int not null default nextval('workers_id') primary key,
 "table" uuid,
 first_name varchar,
 last_name varchar,
@@ -24,8 +24,7 @@ project_description text,
 type_of_penalty varchar,
 penalty_points int,
 director varchar,
-position_director varchar,
-primary key(id)
+position_director varchar
 );
 
 create sequence position_id;
