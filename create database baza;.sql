@@ -1,3 +1,21 @@
+Тема: Создание таблиц, наполнение таблиц, установка внешних связей
+
+Задание: 
+1.	Все скрипты сохранить и опубликовать в GitHub или GitLab.
+2.	Создать несколько таблиц client, product, basket, country. 
+
+Таблица клиент должна иметь следующие колонки. uuid, first_name, last_name, phone, email, address, create_at. confirmed, country_id, balance. 
+
+Таблица product должна иметь следующие колонки: id, name_product, description_product, amount, price, provider, address_provider, country_provider. 
+
+Таблица basket должна иметь следующие колонки: id, id_client, id_product. 
+
+Таблица country должна иметь следующие колонки: id, name, short_code.
+3.	Декомпозировать те таблица которые необходимо.
+4.	Наполнить таблицы данными по 10 строк в каждой таблице, применяя внешние связи (FK). 
+5.	Вывести данные таблицы product используя JOIN и присоединить зависимые таблицы.
+
+
 create database baza;
 
 create sequence client_id;
@@ -12,33 +30,13 @@ email              Varchar,
 address            Varchar,
 create_a           date,     -- дата создания
 confirmed          boolean,  -- подвержден   
-country            Varchar,            --country_id
+country_id         int,            --country_id
 balance            real 
 );
 
-create sequence country1_id;
-create table country1           
-(
-id int not null default nextval('country1_id') primary key,
-country            Varchar
-);
-alter table client drop column country;
-alter table client add column country1_id int references country1(id);
-
-insert into country1 (country) values
-('Россия'),
-('Австралия'),
-('Албания'),
-('Алжир'),
-('Аргентина'),
-('Белиз'),
-('Испания'),
-('Германия'),
-('США'),
-('Канада');
 
 create extension if not exists "uuid-ossp";
-insert into client (uuid, first_nam, last_nam, phone, email, address, create_a, confirmed, balance, country1_id) values
+insert into client (uuid, first_nam, last_nam, phone, email, address, create_a, confirmed, balance, country_id) values
 (uuid_generate_v4(), 'Петр', 'Петров', '123', '123@mail.ru', 'Ряженка 1 кв 15', '2022.01.07', 't', '1000', '1'),
 (uuid_generate_v4(), 'Иван', 'Иванов', '911', 'hdfk@mail.ru', 'Ленина 4 кв 15', '2022.01.07', 'f', '10000', '2'),
 (uuid_generate_v4(), 'Семен', 'Семеныч', '111', 'jdsl@mail.ru', 'Калинина 1 кв 11', '2022.01.07', 't', '999', '2'),
@@ -49,6 +47,10 @@ insert into client (uuid, first_nam, last_nam, phone, email, address, create_a, 
 (uuid_generate_v4(), 'Вика', 'Трапезникова', '345', 'bvc@mail.ru', 'Ряженка 1 кв 15', '2022.01.07', 't', '46', '3'),
 (uuid_generate_v4(), 'Володя', 'Пушкарных', '1212', 'pe@mail.ru', 'Ряженка 1 кв 15', '2022.01.07', 'f', '5766', '1'),
 (uuid_generate_v4(), 'Влад', 'Дубин', '8765', 'zas@mail.ru', 'Ряженка 1 кв 15', '2022.01.07', 'f', '357', '5');
+
+
+alter table client  add column  country int references country(id);
+alter table client  add column  basket int references basket(id);
 
 
 create sequence product_id;
@@ -110,47 +112,30 @@ create sequence basket_id;
 create table basket
 (
 id int not null default nextval('basket_id') primary key,
-client              Varchar,
-product             Varchar
+uuid                   uuid,
+client_id              int,
+product_id             int
 );
 
-create sequence client2_id;
-create table peolpe           
-(
-id int not null default nextval('client2_id') primary key,
-peolpe            Varchar
-);
-alter table basket drop column client, drop column product;
-alter table basket add column client_id int references client(id);
+create extension if not exists "uuid-ossp";
+insert into basket (uuid, client_id, product_id) values
+(uuid_generate_v4(), '1', '1'),
+(uuid_generate_v4(), '2', '2'),
+(uuid_generate_v4(), '3', '3'),
+(uuid_generate_v4(), '4', '4'),
+(uuid_generate_v4(), '5', '5'),
+(uuid_generate_v4(), '6', '6'),
+(uuid_generate_v4(), '7', '7'),
+(uuid_generate_v4(), '8', '8'),
+(uuid_generate_v4(), '9', '9'),
+(uuid_generate_v4(), '10', '10');
 
-insert into peolpe (peolpe) values
-('Вася'),
-('Игорь'),
-('Семен'),
-('Ирина'),
-('Ангелина'),
-('Чарльз'),
-('Костя'),
-('Данил'),
-('Рома'),
-('Влад');
+alter table basket  add column  product int references product(id);
 
-insert into basket (client_id) values
-('1'),
-('2'),
-('3'),
-('4'),
-('5'),
-('6'),
-('7'),
-('8'),
-('9'),
-('10');
-
-create sequence country2_id;
+create sequence country_id;
 create table country
 (
-id int not null default nextval('country2_id') primary key,
+id int not null default nextval('country_id') primary key,
 name              Varchar,
 short_cod         int
 );
