@@ -26,7 +26,7 @@ create table topic (
     description   VARCHAR(200),
     last_activity VARCHAR(100),
     last_user     VARCHAR(100)
-);
+);    
 SELECT username, first_name, last_name FROM users
 ORDER BY users
 limit 5 offset 2; --OFFSET позволяет указать, с какой строки надо начинать выборку
