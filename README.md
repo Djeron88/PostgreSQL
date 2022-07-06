@@ -3,9 +3,7 @@
 Структура таблицы users: id, username,  first_name, last_name, last_activity, password
 Структура таблицы city: id, city, country
 Структура таблицы topic: id, name_topic, description,  last_activity, last_user
->>2.	Наполнить базу данных forum по 10 строк на каждую таблицу, заполнить все кроме last_activity, 
-last_user. Базу данных forum приложить к заданию.
->>3.	Выбрать из таблицы users: username, first_name, last_name между id 3 и 7
+>>2.	Выбрать из таблицы users: username, first_name, last_name между id 3 и 7
 ```python
 create database forum;
 create table users (
