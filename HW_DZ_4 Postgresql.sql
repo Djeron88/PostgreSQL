@@ -61,7 +61,6 @@ insert into Customer (Customer, Customer_address, Amount) values
 
 ALTER TABLE products  RENAME COLUMN Amount_1 TO Amount;   -- Заменяем атрибут в products
 
-
 create extension if not exists "uuid-ossp"; --создаем генератор id
 
 insert into products ("table", Name, amount, price, payment_type, Provider_id, Customer_id)
