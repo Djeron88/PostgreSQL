@@ -23,7 +23,6 @@ Amount_2             int
 );
 
 
-
 create sequence Provider_id;
 create table Provider           -- ПОСТАВЩИК
 (
