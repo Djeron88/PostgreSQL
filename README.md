@@ -1,4 +1,4 @@
-# HW_Postgresql_DZ1
+# HW_Postgresql_DZ1 
 >1.	Создать новую базу данных с именем forum. В базе создать таблицы users, city, topic. 
 Структура таблицы users: id, username,  first_name, last_name, last_activity, password
 Структура таблицы city: id, city, country
